@@ -1,38 +1,83 @@
-.App {
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 0;
+  padding: 0;
+}
+
+.receipt-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+/* Header styles */
+.header {
   text-align: center;
+  margin-bottom: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header h2 {
+  margin: 0;
+  font-size: 24px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.header p {
+  margin: 5px 0 0;
+}
+
+/* Customer info styles */
+.customer-info {
+  margin-bottom: 20px;
+}
+
+.customer-info p {
+  margin: 5px 0;
+}
+
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+/* Totals styles */
+.totals p {
+  margin: 5px 0;
+}
+
+/* Footer styles */
+.footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.footer p {
+  margin: 5px 0;
+}
+/* Print styles */
+@media print {
+  @page {
+    size: 500px 700px; /* Set the page size to match the container size */
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+  .receipt-container {
+    width: 500px; /* Set the width of the receipt container to 500px */
+    height: 700px; /* Set the height of the receipt container to 700px */
+    overflow: visible; /* Remove scrollbars when printing */
   }
 }
