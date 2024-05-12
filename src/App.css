@@ -34,7 +34,7 @@
 
 .order-item {
   display: grid;
-  grid-template-columns: 4fr 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
   border-bottom: 1px solid #ccc;
   padding: 5px 0;
 }
@@ -60,7 +60,7 @@
 }
 
 .dotted-line {
-  border-top: 2px dotted #000;
+  border-top: 3px solid #000; /* Changed from dotted line to bold line */
   margin: 10px 0;
 }
 

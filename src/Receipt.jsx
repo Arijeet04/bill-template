@@ -72,26 +72,27 @@ const Receipt = () => {
             <div className="header">
               <h2>{receiptData.name}</h2>
               <p>{receiptData.address}</p>
-              <p>FSSAI: {receiptData.fssai}</p>
-              <p>GSTIN: {receiptData.gstin}</p>
+              <p><b>FSSAI:</b> {receiptData.fssai}</p>
+              <p><b>GSTIN:</b> {receiptData.gstin}</p>
             </div>
             <div className="dotted-line"></div>
             <div className="receipt-details">
-              <h3>RECEIPT</h3>
+              
               <div className="customer-info">
-                <p>Date: {receiptData.date}</p>
-                <p>Time: {receiptData.time}</p>
-                <p>Bill ID: {receiptData.bill_id}</p>
-                <p>Table No: {receiptData.table_no}</p>
+              <p><b>Date</b>:{receiptData.date}</p>
+                <p><b>Time</b>: {receiptData.time}</p>
+                <p><b>Bill ID</b>: {receiptData.bill_id}</p>
+                <p><b>Table No</b>: {receiptData.table_no}</p>
               </div>
               <div className="dotted-line"></div>
               <div className="order-items">
                 <div className="order-item">
-                  <p>Item</p>
+                  <p>Product Name</p>
                   <p>Price</p>
                   <p>Qty</p>
                   <p>Total</p>
                 </div>
+                <div className="dotted-line"></div>               
                 {renderItems()}
               </div>
               <div className="dotted-line"></div>
@@ -104,14 +105,17 @@ const Receipt = () => {
                   Total: ₹{receiptData.total_with_tax.toFixed(2)}
                 </p>
               </div>
+              <div className="dotted-line"></div>
               <div className="additional-info">
-                <p>Payment Method: {receiptData.payment_method}</p>
+                <p><b>Payment Method:</b> {receiptData.payment_method}</p>
               </div>
               <div className="qr-code">
                 <img
                   src={`data:image/png;base64,${receiptData.qr_image}`}
                   alt="QR Code"
                 />
+              
+                <p><strong>Thank you See You Again !!!!!</strong></p>
               </div>
             </div>
           </div>
