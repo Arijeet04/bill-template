@@ -34,7 +34,7 @@
 
 .order-item {
   display: grid;
-  grid-template-columns: 4fr 1fr 1fr 1fr; 
+  grid-template-columns: 4fr 1fr 1fr 1fr;
   border-bottom: 1px solid #ccc;
   padding: 5px 0;
 }
@@ -58,7 +58,18 @@
   text-align: center;
   font-size: 12px;
 }
+
 .dotted-line {
   border-top: 2px dotted #000;
   margin: 10px 0;
+}
+
+.qr-code {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.qr-code img {
+  max-width: 150px;
+  height: auto;
 }

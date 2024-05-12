@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParam, useSearchParams } from "react-router-dom";
 import "./App.css";
+import QRCode from 'qrcode.react';
 
 const formattingString = (name) => {
   if (name.length > 30) {
@@ -19,13 +20,17 @@ const Receipt = () => {
   const [error, setError] = useState(null);
   const [items, setItems] = useState(null);
   useEffect(() => {
-    const orderId = searchParams?.get("order_id");
-    const productId = searchParams?.get("product_id");
-
-    const url = `http://127.0.0.1:8000/api/v1/order_print?product_id=${productId}&order_id=${orderId}`;
+    
     //use saga to call
     const fetchData = async () => {
       try {
+      const orderId = searchParams?.get("order_id");
+      console.log(orderId);
+      const productId = searchParams?.get("product_id");
+      console.log(productId);
+
+      const url = `http://127.0.0.1:8000/api/v1/order_print?product_id=${productId}&order_id=${orderId}`;
+      
         const response = await fetch(url, {
           method: "GET",
         });
@@ -42,7 +47,8 @@ const Receipt = () => {
       }
     };
     fetchData();
-  }, []);
+  
+  }, [searchParams]);
 
   const renderItems = () => {
     const validJSON = receiptData?.items.replace(/'/g, '"');
@@ -100,6 +106,12 @@ const Receipt = () => {
               </div>
               <div className="additional-info">
                 <p>Payment Method: {receiptData.payment_method}</p>
+              </div>
+              <div className="qr-code">
+                <img
+                  src={`data:image/png;base64,${receiptData.qr_image}`}
+                  alt="QR Code"
+                />
               </div>
             </div>
           </div>
