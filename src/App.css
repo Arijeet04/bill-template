@@ -24,6 +24,28 @@
 }
 
 .customer-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.customer-info .left-info {
+  text-align: left;
+}
+
+.customer-info .left-info p:first-child {
+  margin-bottom: 5px; /* Spacing between date and time */
+}
+
+.customer-info .right-info {
+  text-align: right;
+}
+
+.customer-info .right-info p:first-child {
+  margin-bottom: 5px; /* Spacing between Bill ID and Table No. */
+}
+.customer-info {
   margin-bottom: 20px;
 }
 
@@ -41,6 +63,7 @@
 
 .order-item:first-child {
   font-weight: bold;
+  font-size: 20px;
 }
 
 .total-amount {

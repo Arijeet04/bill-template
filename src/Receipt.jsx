@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParam, useSearchParams } from "react-router-dom";
 import "./App.css";
-import QRCode from 'qrcode.react';
+import QRCode from "qrcode.react";
 
 const formattingString = (name) => {
   if (name.length > 30) {
@@ -20,17 +20,16 @@ const Receipt = () => {
   const [error, setError] = useState(null);
   const [items, setItems] = useState(null);
   useEffect(() => {
-    
     //use saga to call
     const fetchData = async () => {
       try {
-      const orderId = searchParams?.get("order_id");
-      console.log(orderId);
-      const productId = searchParams?.get("product_id");
-      console.log(productId);
+        const orderId = searchParams?.get("order_id");
+        console.log(orderId);
+        const productId = searchParams?.get("product_id");
+        console.log(productId);
 
-      const url = `http://127.0.0.1:8000/api/v1/order_print?product_id=${productId}&order_id=${orderId}`;
-      
+        const url = `http://127.0.0.1:8000/api/v1/order_print?product_id=${productId}&order_id=${orderId}`;
+
         const response = await fetch(url, {
           method: "GET",
         });
@@ -47,7 +46,6 @@ const Receipt = () => {
       }
     };
     fetchData();
-  
   }, [searchParams]);
 
   const renderItems = () => {
@@ -72,17 +70,32 @@ const Receipt = () => {
             <div className="header">
               <h2>{receiptData.name}</h2>
               <p>{receiptData.address}</p>
-              <p><b>FSSAI:</b> {receiptData.fssai}</p>
-              <p><b>GSTIN:</b> {receiptData.gstin}</p>
+              <p>
+                <b>FSSAI:</b> {receiptData.fssai}
+              </p>
+              <p>
+                <b>GSTIN:</b> {receiptData.gstin}
+              </p>
             </div>
-            <div className="dotted-line"></div>
+
             <div className="receipt-details">
-              
               <div className="customer-info">
-              <p><b>Date</b>:{receiptData.date}</p>
-                <p><b>Time</b>: {receiptData.time}</p>
-                <p><b>Bill ID</b>: {receiptData.bill_id}</p>
-                <p><b>Table No</b>: {receiptData.table_no}</p>
+                <div className="left-info">
+                  <p>
+                    <b>Date</b>:{receiptData.date}
+                  </p>
+                  <p>
+                    <b>Time</b>: {receiptData.time}
+                  </p>
+                </div>
+                <div className="right-info">
+                  <p>
+                    <b>Bill ID</b>: {receiptData.bill_id}
+                  </p>
+                  <p>
+                    <b>Table No</b>: {receiptData.table_no}
+                  </p>
+                </div>
               </div>
               <div className="dotted-line"></div>
               <div className="order-items">
@@ -92,7 +105,7 @@ const Receipt = () => {
                   <p>Qty</p>
                   <p>Total</p>
                 </div>
-                <div className="dotted-line"></div>               
+                <div className="dotted-line"></div>
                 {renderItems()}
               </div>
               <div className="dotted-line"></div>
@@ -107,15 +120,19 @@ const Receipt = () => {
               </div>
               <div className="dotted-line"></div>
               <div className="additional-info">
-                <p><b>Payment Method:</b> {receiptData.payment_method}</p>
+                <p>
+                  <b>Payment Method:</b> {receiptData.payment_method}
+                </p>
               </div>
               <div className="qr-code">
                 <img
                   src={`data:image/png;base64,${receiptData.qr_image}`}
                   alt="QR Code"
                 />
-              
-                <p><strong>Thank you See You Again !!!!!</strong></p>
+
+                <p>
+                  <strong>Thank you See You Again !!!!!</strong>
+                </p>
               </div>
             </div>
           </div>
