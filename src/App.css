@@ -43,7 +43,8 @@
 }
 
 .customer-info .right-info p:first-child {
-  margin-bottom: 5px; /* Spacing between Bill ID and Table No. */
+  margin-bottom: 5px;
+  padding-bottom: -1px; /* Spacing between Bill ID and Table No. */
 }
 .customer-info {
   margin-bottom: 20px;
@@ -56,9 +57,11 @@
 
 .order-item {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-columns: 0.8fr 0.5fr 0.5fr 0.8fr;
   border-bottom: 1px solid #ccc;
-  padding: 5px 0;
+  padding: -2px ;
+  column-gap: -9px; /* Adjust this value for horizontal spacing */
+  row-gap: 2px
 }
 
 .order-item:first-child {
@@ -84,7 +87,7 @@
 
 .dotted-line {
   border-top: 3px solid #000; /* Changed from dotted line to bold line */
-  margin: 10px 0;
+  margin: -15px ;
 }
 
 .qr-code {

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParam, useSearchParams } from "react-router-dom";
 import "./App.css";
-import QRCode from "qrcode.react";
 
 const formattingString = (name) => {
   if (name.length > 30) {
@@ -70,9 +69,11 @@ const Receipt = () => {
             <div className="header">
               <h2>{receiptData.name}</h2>
               <p>{receiptData.address}</p>
-              <p>
-                <b>FSSAI:</b> {receiptData.fssai}
-              </p>
+              {receiptData.fssai !== "None" && (
+                <p>
+                  <b>FSSAI:</b> {receiptData.fssai}
+                </p>
+              )}
               <p>
                 <b>GSTIN:</b> {receiptData.gstin}
               </p>
@@ -98,9 +99,10 @@ const Receipt = () => {
                 </div>
               </div>
               <div className="dotted-line"></div>
+
               <div className="order-items">
                 <div className="order-item">
-                  <p>Product Name</p>
+                  <p>Name</p>
                   <p>Price</p>
                   <p>Qty</p>
                   <p>Total</p>
